@@ -1,0 +1,24 @@
+### REGISTER NEW USER
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "mth-bou"
+}
+
+### REGISTER NEW USER
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "mth-bou2"
+}
+
+### GET USER 1
+GET http://localhost:3000/api/auth/user/mth-bou
+
+### GET USER 2
+GET http://localhost:3000/api/auth/user/mth-bou2
+
+### GET MESSAGES BETWEEN 2 USERS
+GET http://localhost:3000/api/chat/messages/fe92a94e-fc16-4412-ab41-01461616b3a3/846d0d5c-50e4-4bf2-b30d-a0ddb9d63f78
