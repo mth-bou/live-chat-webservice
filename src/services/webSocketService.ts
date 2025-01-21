@@ -8,9 +8,10 @@ class WebSocketService {
 			console.log("New Websocket connection");
 			this.clients.add(ws);
 
-			ws.on("message", (message: string) => {
-				console.log("Received message: ", message);
-				this.broadcast(message, ws);
+			ws.on("message", (message: Buffer) => {
+				const text = message.toString();
+				console.log("Received message: ", text);
+				this.broadcast(text, ws);
 			});
 
 			ws.on("close", () => {
@@ -21,8 +22,10 @@ class WebSocketService {
 	}
 
 	private broadcast(message: string, sender: WebSocket) {
+		console.log(`🔄 Diffusion du message : ${message}`);
+
 		this.clients.forEach(client => {
-			if (client !== sender && client.readyState === WebSocket.OPEN) {
+			if (client.readyState === WebSocket.OPEN) {
 				client.send(message);
 			}
 		});
